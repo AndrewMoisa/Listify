@@ -22,7 +22,7 @@
             <!-- Logo -->
             <div class="flex-shrink-0">
               <a
-                href="/index.html"
+                href="/"
                 class="text-2xl font-space-grotesk text-text-primary leading-0 md:text-2xl lg:text-4xl"
                 >Listify
                 <span class="block text-xs md:text-base lg:text-lg"
@@ -54,7 +54,7 @@
             <!-- Desktop Menu (hidden on mobile) -->
             <div class="hidden md:flex space-x-8 absolute right-0">
               <a
-                href="/listings/listings.html"
+                href="/listings"
                 class="block px-3 py-2 text-gray-800 hover:border-b-1 hover:border-primary-hover transition"
                 >Listings</a
               >
@@ -84,7 +84,7 @@
         >
           <div class="px-4 pt-2 pb-3 space-y-1">
             <a
-              href="/listings/listings.html"
+              href="/listings"
               class="block px-3 py-2 text-gray-800 hover:bg-blue-50 hover:text-blue-600 rounded-md transition"
               >Listings</a
             >
@@ -148,15 +148,18 @@
       </section>
       <section class="flex flex-col items-center py-8">
         <h2
-          class="font-semibold text-base text-text-primary uppercase lg:text-lg"
+          class="font-semibold text-base text-text-primary uppercase lg:text-lg mb-4"
         >
           Listings
         </h2>
         <!-- Dynamic listings will be displayed here. -->
-        <div id="listings-container"></div>
+        <div
+          id="listings-container"
+          class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-4 gap-5 px-4 md:px-8 lg:px-12 lg:gap-10 w-full max-w-7xl"
+        ></div>
         <a
-          href="#"
-          class="bg-primary text-white px-6 py-2 rounded-md hover:bg-primary-hover transition text-sm lg:text-base"
+          href="/listings"
+          class="bg-primary text-white px-6 py-2 mt-4 rounded-md hover:bg-primary-hover transition text-sm lg:text-base"
           >Browse listings</a
         >
       </section>
