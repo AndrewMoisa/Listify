@@ -1,18 +1,12 @@
 import { getTimeRemaining } from "../../logic/utils/getTimeRemaining.js";
 
 // Render function stays clean
-export async function renderListings(data) {
-  const listingsContainer = document.getElementById("listings-container");
-  if (!listingsContainer) {
-    console.error("Listings container not found");
-    return;
-  }
-
-  listingsContainer.innerHTML = "";
+export async function renderListings(data, container) {
+  container.innerHTML = "";
 
   data.forEach((listing) => {
     const element = createListingElement(listing);
-    listingsContainer.appendChild(element);
+    container.appendChild(element);
   });
 }
 
@@ -39,7 +33,13 @@ function createListingElement(listing) {
 
   // Title
   const title = document.createElement("h2");
-  title.classList.add("font-semibold", "text-lg");
+  title.classList.add(
+    "font-semibold",
+    "text-lg",
+    "text-text-primary",
+    "mb-2",
+    "truncate"
+  );
   title.textContent = listing.title;
 
   // Time remaining

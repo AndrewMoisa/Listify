@@ -1,10 +1,10 @@
-import { fetchListings } from "../../api/fetchListings.js";
-import { renderListings } from "../../../ui/listings/renderListings.js";
+import { fetchListings } from "../../../api/fetchListings.js";
+import { renderListings } from "../../../../ui/listings/renderListings.js";
 
-export async function listingsHandler(numberOfListings = 4) {
+export async function adDetailsHandler(numberOfListings = 4) {
   try {
-    const container = document.getElementById("listings-container");
-
+    const container = document.getElementById("more-listings");
+    container.innerHTML = ""; // Clear previous content
     if (!container) {
       console.error("Listings container not found");
       return;
