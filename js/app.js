@@ -1,6 +1,8 @@
 import { mobileMenuToggle, changeReview } from "./logic/shared/homepage.js";
 import { listingsHandler } from "./logic/handlers/listings/listingsHandler.js";
 import { adDetailsHandler } from "./logic/handlers/listings/ad/adDetailsHandler.js";
+import { registerHandler } from "./logic/handlers/registerUserHandler.js";
+import { loginHandler } from "./logic/handlers/loginUserHandler.js";
 
 function router() {
   const pathname = window.location.pathname;
@@ -20,6 +22,16 @@ function router() {
     case "/listings/ad.html":
       mobileMenuToggle();
       adDetailsHandler();
+      break;
+    case "/register/index.html":
+    case "/register/":
+      mobileMenuToggle();
+      registerHandler();
+      break;
+    case "/login/index.html":
+    case "/login/":
+      mobileMenuToggle();
+      loginHandler();
       break;
   }
 }
