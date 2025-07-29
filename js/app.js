@@ -16,7 +16,6 @@ function router() {
     case "/listings/":
       mobileMenuToggle();
       listingsHandler(20); // Fetch more listings for the listings page
-      adDetailsHandler();
       break;
     case "/listings/ad.html":
       mobileMenuToggle();
