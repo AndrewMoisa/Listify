@@ -1,6 +1,7 @@
 import { fetchSearch } from "../../../logic/api/fetchSearch.js";
 import { renderListings } from "../../../ui/listings/renderListings.js";
 import { renderErrorMessage } from "../../../ui/shared/displayMessage.js";
+import { setupInfiniteScroll } from "./setupInfiniteScroll.js";
 
 export function searchHandler() {
   const searchInput = document.querySelector("#search-input");
@@ -17,7 +18,9 @@ export function searchHandler() {
 
     try {
       const searchPosts = await getPosts(query);
+      listingsContainer.innerHTML = ""; // Clear previous listings
       renderListings(searchPosts, listingsContainer);
+      setupInfiniteScroll(10, listingsContainer, searchInput);
 
       if (searchPosts.length === 0) {
         searchInput.placeholder = "No results found";
