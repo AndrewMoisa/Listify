@@ -4,10 +4,13 @@ export function displayMessage(container, message, type = "success") {
     type === "success" ? "success-message" : "error-message",
     "p-4",
     type === "success" ? "bg-green-100" : "bg-red-100",
+    "w-full",
+    "border",
     type === "success" ? "text-green-800" : "text-red-800",
     "rounded",
     "shadow"
   );
+
   messageElement.textContent = message;
 
   container.appendChild(messageElement);

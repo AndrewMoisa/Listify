@@ -17,7 +17,7 @@ export async function renderAdDetails(data, container) {
 
   container.innerHTML = ` 
         <img
-          class="w-full lg:max-w-2xl h-auto"
+          class="w-full lg:max-w-2xl max-h-full bg-cover rounded-lg mb-4"
           src="${imageUrl}" 
           alt="${title}"
         />

@@ -1,5 +1,6 @@
 import { fetchSearch } from "../../../logic/api/fetchSearch.js";
 import { renderListings } from "../../../ui/listings/renderListings.js";
+import { renderErrorMessage } from "../../../ui/shared/displayMessage.js";
 
 export function searchHandler() {
   const searchInput = document.querySelector("#search-input");
@@ -16,7 +17,6 @@ export function searchHandler() {
 
     try {
       const searchPosts = await getPosts(query);
-      console.log("Search Results:", searchPosts);
       renderListings(searchPosts, listingsContainer);
 
       if (searchPosts.length === 0) {
@@ -25,9 +25,12 @@ export function searchHandler() {
 
       searchInput.value = "";
     } catch (error) {
-      console.error("Error during search:", error);
+      listingsContainer.innerHTML = ""; // Clear previous listings
+      renderErrorMessage(listingsContainer, "Failed to fetch search results.");
     }
   };
+
+  // Attach event listeners
 
   searchButton.addEventListener("click", handleSearch);
   searchInput.addEventListener("keypress", (e) => {
@@ -39,7 +42,6 @@ export function searchHandler() {
       const inputQuery = await fetchSearch(query);
       return inputQuery.data;
     } catch (error) {
-      console.error("Error fetching posts:", error);
       throw error;
     }
   }

@@ -2,7 +2,7 @@ import { getTimeRemaining } from "../../logic/utils/getTimeRemaining.js";
 
 // Render function stays clean
 export async function renderListings(data, container) {
-  container.innerHTML = "";
+  // container.innerHTML = "";
 
   data.forEach((listing) => {
     const element = createListingElement(listing);
