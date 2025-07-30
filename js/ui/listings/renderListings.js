@@ -23,7 +23,10 @@ function createListingElement(listing) {
   );
 
   const timeRemaining = getTimeRemaining(listing.endsAt);
-  const lastBid = listing.bids[listing.bids.length - 1]?.amount || 0;
+  const lastBid =
+    Array.isArray(listing.bids) && listing.bids.length > 0
+      ? listing.bids[listing.bids.length - 1].amount
+      : 0;
 
   // Image
   const img = document.createElement("img");

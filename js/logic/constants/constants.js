@@ -9,3 +9,4 @@ export const apiKey = "6e53a7da-0085-441c-b617-4de5f57fe9a2";
 export const baseUrl = "https://v2.api.noroff.dev/auction/";
 export const registerUrl = `https://v2.api.noroff.dev/auth/register`;
 export const loginUrl = `https://v2.api.noroff.dev/auth/login`;
+export const searchUrl = `${baseUrl}listings/search`;

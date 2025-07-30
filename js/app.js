@@ -3,6 +3,7 @@ import { listingsHandler } from "./logic/handlers/listings/listingsHandler.js";
 import { adDetailsHandler } from "./logic/handlers/listings/ad/adDetailsHandler.js";
 import { registerHandler } from "./logic/handlers/registerUserHandler.js";
 import { loginHandler } from "./logic/handlers/loginUserHandler.js";
+import { searchHandler } from "./logic/handlers/listings/searchHandler.js";
 
 function router() {
   const pathname = window.location.pathname;
@@ -18,6 +19,7 @@ function router() {
     case "/listings/":
       mobileMenuToggle();
       listingsHandler(20); // Fetch more listings for the listings page
+      searchHandler();
       break;
     case "/listings/ad.html":
       mobileMenuToggle();
