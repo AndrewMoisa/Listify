@@ -4,7 +4,7 @@ import { baseUrl } from "../constants/constants.js";
 export async function fetchListings(limit = 10, pageId = 1) {
   const options = fetchOptions("GET");
 
-  const url = `${baseUrl}listings?limit=${limit}&_bids=true&page=${pageId}`;
+  const url = `${baseUrl}listings?limit=${limit}&_bids=true&page=${pageId}&_active=true`;
 
   const response = await fetch(url, options);
   const json = await response.json();

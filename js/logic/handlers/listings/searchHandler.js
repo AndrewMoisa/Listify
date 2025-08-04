@@ -1,49 +1,51 @@
 import { fetchSearch } from "../../../logic/api/fetchSearch.js";
 import { renderListings } from "../../../ui/listings/renderListings.js";
 import { renderErrorMessage } from "../../../ui/shared/displayMessage.js";
-import { setupInfiniteScroll } from "./setupInfiniteScroll.js";
 
 export function searchHandler() {
   const searchInput = document.querySelector("#search-input");
   const searchButton = document.querySelector("#search-button");
   const listingsContainer = document.querySelector("#listings-container");
 
+  let currentQuery = "";
+  let scrollControl = null;
+
   const handleSearch = async () => {
     const query = searchInput.value.trim();
-
     if (!query) {
       searchInput.placeholder = "Please enter a search query";
       return;
     }
 
-    try {
-      const searchPosts = await getPosts(query);
-      listingsContainer.innerHTML = ""; // Clear previous listings
-      renderListings(searchPosts, listingsContainer);
-      setupInfiniteScroll(10, listingsContainer, searchInput);
+    currentQuery = query;
+    listingsContainer.innerHTML = "Loading..."; // Simple loading indicator
 
-      if (searchPosts.length === 0) {
-        searchInput.placeholder = "No results found";
-      }
+    try {
+      const searchPosts = await fetchSearchPage(currentQuery, 20, 1);
+      listingsContainer.innerHTML = "";
+      renderListings(searchPosts, listingsContainer);
 
       searchInput.value = "";
     } catch (error) {
-      listingsContainer.innerHTML = ""; // Clear previous listings
+      listingsContainer.innerHTML = "";
       renderErrorMessage(listingsContainer, "Failed to fetch search results.");
+      console.error("Error fetching search results:", error);
     }
   };
-
-  // Attach event listeners
 
   searchButton.addEventListener("click", handleSearch);
   searchInput.addEventListener("keypress", (e) => {
     if (e.key === "Enter") handleSearch();
   });
 
-  async function getPosts(query) {
+  searchInput.addEventListener("focus", () => {
+    searchInput.placeholder = "Search...";
+  });
+
+  async function fetchSearchPage(query, page = 1, limit = 10) {
     try {
-      const inputQuery = await fetchSearch(query);
-      return inputQuery.data;
+      const result = await fetchSearch(query, page, limit);
+      return result.data;
     } catch (error) {
       throw error;
     }
