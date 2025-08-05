@@ -4,6 +4,9 @@ import { adDetailsHandler } from "./logic/handlers/listings/ad/adDetailsHandler.
 import { registerHandler } from "./logic/handlers/registerUserHandler.js";
 import { loginHandler } from "./logic/handlers/loginUserHandler.js";
 import { searchHandler } from "./logic/handlers/listings/searchHandler.js";
+import { profileDetailsHandler } from "./logic/handlers/profile/profileDetailsHandler.js";
+import { profileListingsHandler } from "./logic/handlers/profile/profileListingsHandler.js";
+import { profileWinsHandler } from "./logic/handlers/profile/profileWinsListings.js";
 
 function router() {
   const pathname = window.location.pathname;
@@ -34,6 +37,13 @@ function router() {
     case "/login/":
       mobileMenuToggle();
       loginHandler();
+      break;
+    case "/profile/index.html":
+    case "/profile/":
+      mobileMenuToggle();
+      profileDetailsHandler();
+      profileListingsHandler();
+      profileWinsHandler();
       break;
   }
 }
