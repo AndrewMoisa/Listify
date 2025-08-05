@@ -7,6 +7,7 @@ import { searchHandler } from "./logic/handlers/listings/searchHandler.js";
 import { profileDetailsHandler } from "./logic/handlers/profile/profileDetailsHandler.js";
 import { profileListingsHandler } from "./logic/handlers/profile/profileListingsHandler.js";
 import { profileWinsHandler } from "./logic/handlers/profile/profileWinsListings.js";
+import { authUser } from "./logic/auth/auth.js";
 
 function router() {
   const pathname = window.location.pathname;
@@ -15,6 +16,7 @@ function router() {
     case "/":
     case "/index.html":
       mobileMenuToggle();
+      authUser();
       changeReview();
       listingsHandler();
       break;

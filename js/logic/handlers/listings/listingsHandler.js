@@ -1,5 +1,6 @@
 import { fetchListings } from "../../api/fetchListings.js";
 import { renderListings } from "../../../ui/listings/renderListings.js";
+import { getQueryParam } from "../../utils/getQueryParam.js";
 
 export async function listingsHandler(numberOfListings = 4, pageId = 1) {
   try {
@@ -22,11 +23,17 @@ export async function listingsHandler(numberOfListings = 4, pageId = 1) {
 
     renderListings(listingsIndex.data, container);
 
-    renderPagination(
-      metaPagination.pageCount,
-      metaPagination.currentPage,
-      numberOfListings
-    );
+    const isListingsPage =
+      window.location.pathname === "/listings/" ||
+      window.location.pathname === "/listings/index.html";
+
+    if (isListingsPage) {
+      renderPagination(
+        metaPagination.pageCount,
+        metaPagination.currentPage,
+        numberOfListings
+      );
+    }
 
     window.scrollTo({ top: 0, behavior: "smooth" });
   } catch (error) {
