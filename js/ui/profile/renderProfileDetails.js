@@ -1,7 +1,6 @@
 export function renderProfileDetails(profile) {
   const mainElement = document.querySelector("#profile-details");
-  const userNameElement = document.getElementById("user-name");
-  userNameElement.textContent = profile.name;
+
   mainElement.innerHTML += `
     
     <div class="p-6 bg-white rounded-2xl shadow-lg flex flex-col md:flex-row items-center space-y-4 md:space-y-0 md:space-x-6">
@@ -12,6 +11,7 @@ export function renderProfileDetails(profile) {
   />
   <div class="text-gray-800 w-full ">
     <div class="space-y-1 text-sm md:text-base">
+      <p class="text-2xl font-semibold">${profile.name}</p>
       <p><span class="font-medium">Email:</span> ${profile.email}</p>
       <p><span class="font-medium">Credits:</span> ${profile.credits || 0}</p>
       <p><span class="font-medium">Bio:</span> ${

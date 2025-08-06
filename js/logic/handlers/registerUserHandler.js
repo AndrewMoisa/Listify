@@ -18,6 +18,7 @@ async function submitForm(event) {
   const form = event.target;
   const formData = new FormData(form);
   const data = Object.fromEntries(formData);
+  console.log("Form data:", data);
 
   const button = form.querySelector("button");
 

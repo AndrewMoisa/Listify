@@ -2,15 +2,23 @@ import { fetchProfileDetails } from "../../api/fetchProfileDetails.js";
 import { getUsername } from "../../utils/storage.js";
 import { renderProfileDetails } from "../../../ui/profile/renderProfileDetails.js ";
 import { baseUrl } from "../../constants/constants.js";
+import { getQueryParam } from "../../utils/getQueryParam.js";
 
 export async function profileDetailsHandler() {
   const userName = getUsername();
-  const url = `${baseUrl}profiles/${userName}?&_listings=true&_wins=true`;
+
+  const queryParams = getQueryParam("name");
+
+  let url = `${baseUrl}profiles/${userName}?&_listings=true&_wins=true`;
   try {
     if (!userName) {
       throw new Error("Username not found in storage");
     }
-    console.log("Username from query param:", userName);
+
+    if (queryParams) {
+      console.log("Using query param for username:", queryParams);
+      url = `${baseUrl}profiles/${queryParams}?&_listings=true&_wins=true`;
+    }
 
     const profileDetails = await fetchProfileDetails(url);
     if (!profileDetails || !profileDetails.data) {

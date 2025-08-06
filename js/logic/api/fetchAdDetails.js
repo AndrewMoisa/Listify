@@ -4,7 +4,7 @@ import { baseUrl } from "../constants/constants.js";
 export async function fetchAdDetails(id) {
   const options = fetchOptions("GET");
 
-  const url = `${baseUrl}listings/${id}?_bids=true`;
+  const url = `${baseUrl}listings/${id}?_bids=true&_seller=true`;
 
   const response = await fetch(url, options);
   const json = await response.json();

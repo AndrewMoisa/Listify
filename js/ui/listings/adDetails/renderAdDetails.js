@@ -16,11 +16,15 @@ export async function renderAdDetails(data, container) {
     })) || [];
 
   container.innerHTML = ` 
+    
         <img
           class="w-full lg:max-w-2xl max-h-full bg-cover rounded-lg mb-4"
           src="${imageUrl}" 
           alt="${title}"
         />
+        <a class="text-lg font-semibold text-text-primary mb-2 underline" href="/profile/?name=${
+          data.seller.name
+        }">Seller: ${data.seller.name}</a>
         <div class="w-full lg:w-1/2">
           <section
             class="flex justify-between items-center bg-background p-4 rounded"

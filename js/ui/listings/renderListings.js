@@ -67,7 +67,7 @@ function createListingElement(listing) {
 
   // View Details link
   const link = document.createElement("a");
-  link.href = "ad.html?id=" + listing.id;
+  link.href = "/listings/ad.html?id=" + listing.id;
   link.classList.add(
     "text-accent",
     "hover:underline",
