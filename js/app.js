@@ -8,6 +8,7 @@ import { profileDetailsHandler } from "./logic/handlers/profile/profileDetailsHa
 import { profileListingsHandler } from "./logic/handlers/profile/profileListingsHandler.js";
 import { profileWinsHandler } from "./logic/handlers/profile/profileWinsListings.js";
 import { authUser } from "./logic/auth/auth.js";
+import { createListingsHandler } from "./logic/handlers/listings/createListingHandler.js";
 
 function router() {
   const pathname = window.location.pathname;
@@ -46,6 +47,9 @@ function router() {
       profileDetailsHandler();
       profileListingsHandler();
       profileWinsHandler();
+      break;
+    case "/listings/create.html":
+      createListingsHandler();
       break;
   }
 }
